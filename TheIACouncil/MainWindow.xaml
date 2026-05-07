@@ -1,0 +1,16 @@
+﻿<Window x:Class="TheIACouncil.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="El Consejo de las IAs"
+        Width="1080"
+        Height="700"
+        MinWidth="880"
+        MinHeight="560">
+    <Grid>
+        <ContentControl x:Name="Shell"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" />
+    </Grid>
+</Window>

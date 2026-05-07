@@ -1,0 +1,46 @@
+<UserControl x:Class="TheIACouncil.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="28">
+        <Border Style="{StaticResource PagePanel}"
+                MaxWidth="720"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Acerca del juego"
+                           Style="{StaticResource H1}"
+                           FontSize="24"
+                           Margin="0,0,0,16" />
+                <TextBlock Style="{StaticResource BodyPage}"
+                           Margin="0,0,0,12">
+                    <Run Text="Escribes una pregunta. Varias IAs del consejo la discuten por turnos: cada una " />
+                    <Run FontWeight="Bold" Text="resume su respuesta en un solo párrafo" />
+                    <Run Text=", viendo la pregunta y lo que dijeron las anteriores. Al terminar la ronda, cada una debe contestar " />
+                    <Run FontWeight="Bold" Text="sí o no de manera rotunda" />
+                    <Run Text="; el juego interpreta esas respuestas y te muestra el resultado." />
+                </TextBlock>
+                <TextBlock Style="{StaticResource BodyPage}"
+                           Opacity="0.88"
+                           Margin="0,0,0,12">
+                    <Run Text="Cada IA activa actúa como un «Hermano» con personalidad (por ejemplo Hermano Grok). Retratos de monjes, escenas y viñetas de veredicto van " />
+                    <Run FontWeight="SemiBold" Text="incluidos en la propia aplicación" />
+                    <Run Text=" (recursos embebidos en el ensamblado); no hay carpeta de recursos que puedas rellenar al usar el juego." />
+                </TextBlock>
+                <TextBlock Style="{StaticResource BodyPage}"
+                           Opacity="0.85">
+                    <Run Text="Configura claves de APIs conocidas o modelos locales (p. ej. " />
+                    <Hyperlink NavigateUri="https://ollama.com"
+                               RequestNavigate="Link_Click">
+                        <Run Text="Ollama" />
+                    </Hyperlink>
+                    <Run Text="). Los datos se guardan en tu perfil de usuario (AppData)." />
+                </TextBlock>
+                <Button Content="← Volver"
+                        Style="{StaticResource NavBtn}"
+                        HorizontalAlignment="Left"
+                        Margin="0,22,0,0"
+                        Click="BackClick" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

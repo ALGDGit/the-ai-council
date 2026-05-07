@@ -1,0 +1,103 @@
+<UserControl x:Class="TheIACouncil.Views.ImpostorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="22"
+               LastChildFill="True">
+        <Border DockPanel.Dock="Top"
+                Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock Text="Modo: El impostor"
+                           Style="{StaticResource H1}"
+                           FontSize="24" />
+                <TextBlock Style="{StaticResource BodyDark}"
+                           Margin="0,8,0,0"
+                           TextWrapping="Wrap"
+                           Text="Un hermano ha sido asesinado. Entre las IAs hay un culpable que puede mentir. Interroga todo lo que quieras y luego acusa." />
+            </StackPanel>
+        </Border>
+
+        <StackPanel DockPanel.Dock="Bottom"
+                    Orientation="Horizontal"
+                    Margin="0,12,0,0">
+            <Button x:Name="NewRoundButton"
+                    Content="Nueva partida"
+                    Style="{StaticResource PrimaryBtn}"
+                    HorizontalContentAlignment="Center"
+                    Click="NewRoundClick" />
+            <Button Content="← Modos"
+                    Style="{StaticResource NavBtn}"
+                    HorizontalContentAlignment="Center"
+                    Click="BackClick" />
+        </StackPanel>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Style="{StaticResource GameCard}"
+                    Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Text="Hermandad en sala"
+                               Style="{StaticResource Muted}"
+                               Margin="0,0,0,8" />
+                    <WrapPanel x:Name="BrothersPanel"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,8" />
+                    <TextBlock x:Name="SelectedBrotherLine"
+                               Style="{StaticResource Muted}"
+                               Margin="0,0,0,8"
+                               Text="Seleccionado: —"
+                               TextWrapping="Wrap" />
+
+                    <Grid Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="InterrogateQuestionBox"
+                                 Grid.Column="0"
+                                 MinWidth="320"
+                                 Margin="0,0,8,0"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 MaxHeight="80" />
+                        <Button x:Name="AskButton"
+                                Grid.Column="1"
+                                Content="Interrogar"
+                                Style="{StaticResource PrimaryBtn}"
+                                HorizontalContentAlignment="Center"
+                                Click="AskClick" />
+                    </Grid>
+
+                    <Grid Margin="0,8,0,0">
+                        <Button x:Name="AccuseButton"
+                                Content="Acusar de impostor"
+                                Style="{StaticResource NavBtn}"
+                                HorizontalAlignment="Left"
+                                HorizontalContentAlignment="Center"
+                                Click="AccuseClick" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="1"
+                    Style="{StaticResource PagePanel}">
+                <DockPanel LastChildFill="True">
+                    <TextBlock x:Name="StatusLine"
+                               DockPanel.Dock="Top"
+                               Style="{StaticResource Muted}"
+                               Margin="0,0,0,8"
+                               TextWrapping="Wrap" />
+                    <ScrollViewer x:Name="ImpostorLogScroll"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel x:Name="LogPanel" />
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </DockPanel>
+</UserControl>
