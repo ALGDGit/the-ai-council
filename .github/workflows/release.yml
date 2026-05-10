@@ -1,4 +1,4 @@
-# Crea un GitHub Release con el binario de Windows al pushear un tag v1.2.3
+# Crea un GitHub Release al pushear un tag v1.2.3 (zip + .exe single-file)
 name: Release
 
 on:
@@ -20,7 +20,7 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Publish (framework-dependent, win-x64)
+      - name: Publish folder (para el .zip)
         run: >
           dotnet publish TheIACouncil/TheIACouncil.csproj
           -c Release
@@ -28,14 +28,27 @@ jobs:
           --self-contained false
           -o ./artifacts/TheIACouncil
 
-      - name: Zip artifact
+      - name: Publish single-file .exe
+        run: >
+          dotnet publish TheIACouncil/TheIACouncil.csproj
+          -c Release
+          -r win-x64
+          --self-contained false
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -o ./artifacts/single
+
+      - name: Preparar zip y .exe con nombre de versión
         shell: pwsh
         run: |
           $ver = "${{ github.ref_name }}"
           Compress-Archive -Path ./artifacts/TheIACouncil/* -DestinationPath "./TheIACouncil-$ver-win-x64.zip" -Force
+          Copy-Item ./artifacts/single/TheIACouncil.exe "./TheIACouncil-$ver.exe"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: TheIACouncil-${{ github.ref_name }}-win-x64.zip
+          files: |
+            TheIACouncil-${{ github.ref_name }}-win-x64.zip
+            TheIACouncil-${{ github.ref_name }}.exe
           generate_release_notes: true

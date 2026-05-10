@@ -16,6 +16,19 @@ Opcional:
 
 ---
 
+## Descargar release (binarios)
+
+Las versiones publicadas están en **[GitHub Releases](https://github.com/ALGDGit/the-ai-council/releases)**.
+
+- **`TheIACouncil-vX.Y.Z.exe`**: un solo ejecutable (single-file).  
+- **`TheIACouncil-vX.Y.Z-win-x64.zip`**: misma aplicación en carpeta (por si prefieres extraer todo).
+
+En ambos casos hace falta el **[.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)** para Windows x64 (no hace falta el SDK para solo ejecutar).
+
+Para publicar una nueva versión desde git: crea y sube un tag `vX.Y.Z`; [Actions](https://github.com/ALGDGit/the-ai-council/actions) genera el release y los adjuntos automáticamente.
+
+---
+
 ## Instalación y ejecución
 
 En la raíz del repositorio (`TheIACouncil.sln`):
